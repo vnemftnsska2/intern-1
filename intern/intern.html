@@ -87,7 +87,7 @@
                 this.uid++;
             },
             // init Table
-            init (members) {
+            init (members = []) {
                 this.tbody.innerHTML = '';
                 if (unetMembers.length === 0) {
                     const trElem = document.createElement('tr');
@@ -204,7 +204,7 @@
             unetMembers = [...JSON.parse(localStorage.getItem('members'))];
             draw.init(unetMembers);
         } else {
-            draw.init([]);
+            draw.init();
         }
     });
 </script>
