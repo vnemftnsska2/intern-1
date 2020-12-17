@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <h2>ㅇㅇㅇㅇ SYSTEM 직원</h2>
+        <h2>UNET SYSTEM 직원</h2>
         <div class="formContainer">
             <form id="memberForm">
                 <div>
@@ -42,8 +42,8 @@
                     <th width="13%">입사일</th>
                     <th width="13%">근속연수</th>
                     <th width="18%">이메일</th>
-                    <th width="7%">수정</th>
-                    <th width="7%">삭제</th>
+                    <th width="6%">수정</th>
+                    <th width="6%">삭제</th>
                 </tr>
             </thead>
             <tbody id="membersTbody">
@@ -87,7 +87,7 @@
                 this.uid++;
             },
             // init Table
-            init (members = []) {
+            init (members) {
                 this.tbody.innerHTML = '';
                 if (unetMembers.length === 0) {
                     const trElem = document.createElement('tr');
@@ -133,9 +133,23 @@
 
             // action
             if (action === 'delete') {
+                /* node 삭제 예시 */
+                let node = target;
+                while (true) {
+                    node = node.parentNode;
+                    console.log(node.tagName);
+                    if (node.tagName === 'TR') {
+                        node.remove();
+                        break;
+                    }
+                }
+
+                /* array 삭제 후 reload */
                 unetMembers = unetMembers.filter(member => member.uid !== parseInt(selectUid));
+                console.log(unetMembers);
                 localStorage.setItem('members', JSON.stringify(unetMembers));
-                draw.init(unetMembers);
+                // draw.init(unetMembers);
+
             } else if (action === 'modify') {
                 const selectMember = unetMembers.find(member => member.uid === parseInt(selectUid));
                 document.getElementById('memberUid').value = selectMember.uid;
@@ -204,7 +218,7 @@
             unetMembers = [...JSON.parse(localStorage.getItem('members'))];
             draw.init(unetMembers);
         } else {
-            draw.init();
+            draw.init([]);
         }
     });
 </script>

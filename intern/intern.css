@@ -4,8 +4,9 @@ body {margin: 0;}
 .formContainer {margin-bottom: 1rem;}
 #memberForm {display: flex; flex-wrap: wrap; justify-content: space-between;}
 #memberForm > div { margin: 0 .5rem;}
-.memberTable {display: table; margin: 0 auto; width: 95%; max-width: 95%;}
-table, tr, th, td {padding: .3rem; border: 1px solid #ddd; border-collapse: collapse; text-align: center;}
+table {display: table; width: 100%; max-width: 100%; border: 1px solid #ddd;}
+table > thead > tr > th {border: 1px solid #ddd;}
+table > tbody > tr > td {border: 1px solid #ddd; text-align: center;}
 .btn { width: 10rem; }
 .btn-sm {width: 5rem;}
 .btn-xs {width: 3rem;}
