@@ -4,7 +4,7 @@ body {margin: 0;}
 .formContainer {margin-bottom: 1rem;}
 #memberForm {display: flex; flex-wrap: wrap; justify-content: space-between;}
 #memberForm > div { vertical-align: middle; margin: 0 .5rem;}
-input {height: 1.5rem;}
+input, select {height: 1.5rem;}
 table {display: table; width: 100%; max-width: 100%; border: 1px solid #ddd;}
 table > thead > tr > th {border: 1px solid #ddd;}
 table > tbody > tr > td {border: 1px solid #ddd; text-align: center;}
