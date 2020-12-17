@@ -14,17 +14,19 @@
                 <div>
                     <input type="hidden" id="memberUid">
                     <label for="memberName">이름</label>
-                    <input type="text" id="memberName">
+                    <input type="text" id="memberName" class="input-sm">
                     <label for="memberDept">부서</label>
-                    <input type="text" id="memberDept">
+                    <input type="text" id="memberDept" class="input-md">
                     <label for="memberRank">직급</label>
-                    <input type="text" id="memberRank">
+                    <input type="text" id="memberRank" class="input-md">
                     <label for="memberStartDate">입사일</label>
-                    <input type="text" id="memberStartDate">
+                    <input type="text" id="memberStartDate" class="input-md">
                     <label for="memberEmail">이메일</label>
-                    <input type="text" id="memberEmail">
+                    <input type="text" id="memberEmail" class="input-lg">
                 </div>
                 <div>
+                    <label for="filterBox">검색</label>
+                    <input type="text" id="filterBox" class="input-lg">
                     <button type="button" id="memberAddBtn" class="btn">등록</button>
                     <button type="button" id="memberUpdateBtn" class="btn-sm hiddenBtn">완료</button>
                     <button type="button" id="updateCancleBtn" class="btn-sm hiddenBtn">취소</button>
@@ -200,6 +202,12 @@
             updateCancleBtn.classList.toggle('hiddenBtn');
         };
 
+        const getFilterMember = (e) => {
+            const filterStr = e.target.value
+            const filterMembers = unetMembers.filter(member => JSON.stringify(member).indexOf(filterStr) > -1);
+            draw.init(filterMembers);
+        };
+
         const initMember = () => {
             if (!confirm('멤버를 모두 삭제하시겠습니까?')) return;
             localStorage.clear();
@@ -212,6 +220,7 @@
         document.getElementById('membersTbody').addEventListener('click', (e) => actionMembersTbody(e));
         document.getElementById('memberUpdateBtn').addEventListener('click', modifyMemberInfo);
         document.getElementById('updateCancleBtn').addEventListener('click', modifyCancle);
+        document.getElementById('filterBox').addEventListener('keyup', (e) => getFilterMember(e));
 
         // Init
         if (localStorage.length > 0) {
