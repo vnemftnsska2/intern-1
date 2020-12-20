@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <h2>UNET SYSTEM 직원</h2>
+        <h2>ㅇㅇㅇㅇ SYSTEM 직원</h2>
         <div class="formContainer">
             <form id="memberForm">
                 <div>
@@ -152,7 +152,6 @@
                 let node = target;
                 while (true) {
                     node = node.parentNode;
-                    console.log(node.tagName);
                     if (node.tagName === 'TR') {
                         node.remove();
                         break;
@@ -161,7 +160,6 @@
 
                 /* array 삭제 후 reload */
                 unetMembers = unetMembers.filter(member => member.uid !== parseInt(selectUid));
-                console.log(unetMembers);
                 localStorage.setItem('members', JSON.stringify(unetMembers));
                 // draw.init(unetMembers);
 
